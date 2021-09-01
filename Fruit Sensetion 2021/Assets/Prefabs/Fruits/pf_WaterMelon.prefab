@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6656142191556633706
+--- !u!1 &1983202586743587224
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,69 +8,54 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6656142191556633704}
-  - component: {fileID: 6656142191556633687}
-  - component: {fileID: 541178560050768226}
-  - component: {fileID: 840389068047718112}
+  - component: {fileID: 1983202586743587226}
+  - component: {fileID: 1983202586743587237}
+  - component: {fileID: 3156558557544192984}
+  - component: {fileID: 149291614}
   m_Layer: 0
-  m_Name: pf_Lemon
-  m_TagString: Lemon
+  m_Name: pf_WaterMelon
+  m_TagString: WaterMelon
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6656142191556633704
+--- !u!4 &1983202586743587226
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6656142191556633706}
+  m_GameObject: {fileID: 1983202586743587224}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.936, y: -0.881, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 6656142191652797529}
+  - {fileID: 1983202586830936491}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6656142191556633687
+--- !u!114 &1983202586743587237
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6656142191556633706}
+  m_GameObject: {fileID: 1983202586743587224}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13e2d1628d3bd7c49afb53dba600ef8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  basketType: 3
   rotationForce: 5
---- !u!58 &541178560050768226
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6656142191556633706}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.05, y: -0.04}
-  serializedVersion: 2
-  m_Radius: 0.19
---- !u!50 &840389068047718112
+--- !u!50 &3156558557544192984
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6656142191556633706}
+  m_GameObject: {fileID: 1983202586743587224}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -80,11 +65,27 @@ Rigidbody2D:
   m_AngularDrag: 0.2
   m_GravityScale: 0.5
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
---- !u!1 &6656142191652797530
+--- !u!70 &149291614
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983202586743587224}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.4, y: 0.51}
+  m_Direction: 0
+--- !u!1 &1983202586830936488
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,36 +93,36 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6656142191652797529}
-  - component: {fileID: 6656142191652797528}
+  - component: {fileID: 1983202586830936491}
+  - component: {fileID: 1983202586830936490}
   m_Layer: 0
   m_Name: GFX
-  m_TagString: Untagged
+  m_TagString: WaterMelon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6656142191652797529
+--- !u!4 &1983202586830936491
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6656142191652797530}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_GameObject: {fileID: 1983202586830936488}
+  m_LocalRotation: {x: 0, y: 0, z: 0.24953501, w: 0.9683658}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6656142191556633704}
+  m_Father: {fileID: 1983202586743587226}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6656142191652797528
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 28.9}
+--- !u!212 &1983202586830936490
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6656142191652797530}
+  m_GameObject: {fileID: 1983202586830936488}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -155,7 +156,7 @@ SpriteRenderer:
   m_SortingLayerID: 460569825
   m_SortingLayer: 1
   m_SortingOrder: 12
-  m_Sprite: {fileID: -3857283443805126220, guid: 8f8b6f358ea9de148998ad7bcd057140, type: 3}
+  m_Sprite: {fileID: -381933496837311047, guid: 8f8b6f358ea9de148998ad7bcd057140, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

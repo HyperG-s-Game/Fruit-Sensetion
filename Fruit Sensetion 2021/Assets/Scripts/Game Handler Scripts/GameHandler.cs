@@ -8,6 +8,9 @@ using UnityEngine.SceneManagement;
 namespace GamerWolf.FruitSensetion{
     public class GameHandler : MonoBehaviour {
 
+        
+
+
         [Header("Timer Names")]
         [SerializeField] private string gameTimerName = "Game Timer";
         [SerializeField] private string fruitSpawningTimerName = "Fruit";
@@ -30,15 +33,16 @@ namespace GamerWolf.FruitSensetion{
         [SerializeField] private bool fruitDrop;
         [SerializeField] private bool isGameOver;
         [SerializeField] private int collectedFruitCounts;
-        private LevelHandler levelHandler;
-        private int currentTime;
-        private UiHandler uiHandler;
 
+        private int currentTime;
+        private LevelHandler levelHandler;
+        private UiHandler uiHandler;
 
         #region Singelton..........
         public static GameHandler i{get;private set;}    
         private void Awake(){
             #if UNITY_ANDROID
+                Debug.unityLogger.logEnabled = false;
                 Application.targetFrameRate = 60;
             #endif
 
@@ -48,7 +52,7 @@ namespace GamerWolf.FruitSensetion{
                 Destroy(i.gameObject);
             }
 
-            levelHandler = GetComponent<LevelHandler>();
+            
         }
         #endregion
         
@@ -56,6 +60,7 @@ namespace GamerWolf.FruitSensetion{
         
         private void Start(){
             uiHandler = UiHandler.i;
+            levelHandler = LevelHandler.i;
             StartCoroutine(nameof(StartGameRoutine));
         }
 
@@ -68,6 +73,7 @@ namespace GamerWolf.FruitSensetion{
             yield return StartCoroutine(nameof(GamePlayRoutine));
         }
         private IEnumerator GamePlayRoutine(){
+
             OnGamePlaying?.Invoke();
             OnGameResume?.Invoke();
             StartTimers();

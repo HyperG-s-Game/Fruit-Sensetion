@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace GamerWolf.FruitSensetion{
 
     public class Fruit : MonoBehaviour, IPooledObject{
-
+        [SerializeField] protected BasketTypes basketType;
         [SerializeField] private float rotationForce = 5f;
         private Rigidbody2D rb2D;
 
@@ -19,14 +19,18 @@ namespace GamerWolf.FruitSensetion{
 
         public void OnObjectReuse(){
             rb2D.AddTorque(rotationForce);
-            Invoke(nameof(DestroyMySelf),5f);
             // Debug.Log(transform.name + " is Reused");
         }
 
         
         
         
-
+        private void OnCollisionEnter2D(Collision2D coli2D){
+            if(coli2D.gameObject.CompareTag("Player")){
+                return;
+            }
+            Invoke(nameof(DestroyMySelf),5f);
+        }
 
         private void OnTriggerEnter2D(Collider2D coli2D){
             if(coli2D.gameObject.CompareTag("Player")){
@@ -39,7 +43,9 @@ namespace GamerWolf.FruitSensetion{
             }
             
         }
-        
+        public BasketTypes GetFruitBasket(){
+            return basketType;
+        }
     }
 
 }

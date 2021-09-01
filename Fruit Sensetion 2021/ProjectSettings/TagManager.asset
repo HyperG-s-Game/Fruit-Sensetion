@@ -6,8 +6,10 @@ TagManager:
   tags:
   - Mango
   - Apple
-  - Lemon
   - Ground
+  - Orange
+  - WaterMelon
+  - Cherry
   layers:
   - Default
   - TransparentFX

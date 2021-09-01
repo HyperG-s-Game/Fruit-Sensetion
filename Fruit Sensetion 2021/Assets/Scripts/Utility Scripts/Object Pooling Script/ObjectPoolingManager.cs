@@ -5,7 +5,7 @@ using UnityEngine;
 namespace GamerWolf.Utils{
 
     
-    public enum PoolObjectTag{Mango,Apple,Lemon}
+    public enum PoolObjectTag{Mango,Apple,Orange,WaterMelon,Cherry}
     public class ObjectPoolingManager : MonoBehaviour{
 
         #region Singelton.
@@ -30,7 +30,7 @@ namespace GamerWolf.Utils{
         }
 
         [SerializeField] private List<Pool> pools = new List<Pool>();
-        private Dictionary<PoolObjectTag , Queue<GameObject>> poolDictionary;
+        private Dictionary<PoolObjectTag, Queue<GameObject>> poolDictionary;
 
         private GameObject parentObj;
         private void Start(){
@@ -57,7 +57,15 @@ namespace GamerWolf.Utils{
                 poolDictionary.Add(pool.tag,objectPool);
             }
         }
+        private PoolObjectTag GetRandomTag(){
+            int randomNum = Random.Range(0,pools.Count);
+            return pools[randomNum].tag;
+        }
         
+
+        public GameObject SpawnRandomFromPool(Vector3 _spawnPoint,Quaternion _rotations){
+            return SpawnFromPool(GetRandomTag(),_spawnPoint,_rotations);
+        }
         
         public GameObject SpawnFromPool(PoolObjectTag tag,Vector3 _spawnPosition,Quaternion _rotation){
             if(!poolDictionary.ContainsKey(tag)){

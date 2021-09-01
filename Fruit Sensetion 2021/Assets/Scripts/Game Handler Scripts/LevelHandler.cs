@@ -5,35 +5,72 @@ using System.Collections.Generic;
 namespace GamerWolf.FruitSensetion{
 
     public class LevelHandler : MonoBehaviour {
-        
-        
-        [SerializeField] private Transform[] spawnPointArray;
+
+        [Header("Level Data")]
+        [SerializeField] private LevelDataSO levelDataSO;
+        [SerializeField] private List<Basket> basketsList;
+        [SerializeField] private List<Transform> basketPositionList;
+        private List<Vector3> spawnPointList;
         private ObjectPoolingManager objectPoolingManager;
+
+        #region Singleton......
+
+        public static LevelHandler i;
+
+        private void Awake(){
+            if(i == null){
+                i = this;
+            }else{
+                Destroy(i.gameObject);
+            }
+            objectPoolingManager = GetComponent<ObjectPoolingManager>();
+        }
+
+        #endregion
+
         private void Start(){
-            objectPoolingManager = ObjectPoolingManager.i;
+            spawnPointList = new List<Vector3>();
+            SpawnBaskets();
+        }
+
+        private void SpawnBaskets(){
+            foreach(BasketTypes basketTypes in levelDataSO.basketTypesList){
+                for (int i = 0; i < basketsList.Count; i++){
+                    Basket spawnbasket = basketsList[i];
+                    if(basketTypes == spawnbasket.GetBasketTypes()){
+                        Transform spawnPoint = GetRandomBasketPosition();
+                        Basket basket = Instantiate(spawnbasket,spawnPoint.position,Quaternion.identity);
+                        SetSpawnPoint(basket.GetFruitSpawnPoint());
+                        basketsList.Remove(spawnbasket);
+                        basketPositionList.Remove(spawnPoint);
+                    }
+                    
+                }
+            }
+            
+            
         }
         public void SpawnFruit(){
-            int randNum = UnityEngine.Random.Range(0,3);
-            Debug.Log("RandomNum " + randNum);
-            if(randNum == 3){
-                randNum = UnityEngine.Random.Range(0,3);
-            }
-            switch(randNum){
-                case 0:
-                    objectPoolingManager.SpawnFromPool(PoolObjectTag.Mango,GetRandomSpawnPoint().position,Quaternion.identity);
-                break;
-                case 1:
-                    objectPoolingManager.SpawnFromPool(PoolObjectTag.Apple,GetRandomSpawnPoint().position,Quaternion.identity);
-                break;
-                case 2:
-                    objectPoolingManager.SpawnFromPool(PoolObjectTag.Lemon,GetRandomSpawnPoint().position,Quaternion.identity);
-                break;
+            GameObject pooledObject = objectPoolingManager.SpawnRandomFromPool(GetRandomFruitSpawnPoint(),Quaternion.identity);
+            Fruit fruit =pooledObject.GetComponent<Fruit>();
+            if(fruit != null){
+                if(!levelDataSO.basketTypesList.Contains(fruit.GetFruitBasket())){
+                    fruit.DestroyMySelf();
+                }
             }
         }
-        private Transform GetRandomSpawnPoint(){
-            int randomSpawnPoint = UnityEngine.Random.Range(0,spawnPointArray.Length);
-            return spawnPointArray[randomSpawnPoint];
+        private void SetSpawnPoint(Vector3 spawnPoint){
+            spawnPointList.Add(spawnPoint);
+        }
+        private Vector3 GetRandomFruitSpawnPoint(){
+            int randomSpawnPoint = UnityEngine.Random.Range(0,spawnPointList.Count);
+            return spawnPointList[randomSpawnPoint];
 
+        }
+        
+        private Transform GetRandomBasketPosition(){
+            int randomPoint = UnityEngine.Random.Range(0,basketPositionList.Count);
+            return basketPositionList[randomPoint];
         }
     
     }

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 namespace GamerWolf.FruitSensetion{
-    public class LemonBowl : Bowls {
+    public class LemonBowl : Basket {
         
         
         protected override void OnTriggerEnter2D(Collider2D coli2D){
