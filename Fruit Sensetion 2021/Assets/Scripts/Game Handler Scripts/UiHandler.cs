@@ -1,8 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using System.Collections.Generic;
+using GamerWolf.Utils;
 
 namespace GamerWolf.FruitSensetion {
     public class UiHandler : MonoBehaviour {
@@ -32,6 +31,12 @@ namespace GamerWolf.FruitSensetion {
             //     liveCountImages[i].color = deathColor;
             // }
         }
+
+
+        public void MoveToMenu(){
+            LevelLoader.instance.SwitchScene(SceneIndex.Main_Menu);
+        }
+        
     }
 
 }

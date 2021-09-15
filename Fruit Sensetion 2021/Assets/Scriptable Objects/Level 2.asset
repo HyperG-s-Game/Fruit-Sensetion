@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Level 2
   m_EditorClassIdentifier: 
   sceneIndex: 3
+  basketTypesList: 020000000100000003000000
   isCompleted: 0

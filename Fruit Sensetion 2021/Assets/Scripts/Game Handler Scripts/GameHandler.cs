@@ -172,6 +172,7 @@ namespace GamerWolf.FruitSensetion{
             }
         }
         public void Restart(){
+            OnGameResume?.Invoke();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
